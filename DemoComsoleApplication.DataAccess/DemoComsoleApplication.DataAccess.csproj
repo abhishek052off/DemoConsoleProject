@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DAL\OrderDal.cs" />
     <Compile Include="DAL\UserDal.cs" />
+    <Compile Include="DataBaseSim\Order.cs" />
     <Compile Include="DataBaseSim\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

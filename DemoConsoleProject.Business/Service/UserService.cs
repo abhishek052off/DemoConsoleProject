@@ -8,23 +8,37 @@ using System.Threading.Tasks;
 
 namespace DemoConsoleProject.Business.Service
 {
-    public class UserService
+  public class UserService
+  {
+
+    public int CreateUser(string name)
     {
 
-        public int CreateUser(string name)
-        {
+      var useDal = new UserDal();
 
-            var useDal = new UserDal();
+      int id = useDal.CreateUser(name);
 
-            int id = useDal.CreateUser(name);
-
-            return id;
-        }
-
-        public List<User> GetAllUsers()
-        {
-            var useDal = new UserDal();
-            return useDal.GetAllUsers();
-        }
+      return id;
     }
+
+    public List<User> GetAllUsers()
+    {
+      var useDal = new UserDal();
+      return useDal.GetAllUsers();
+    }
+
+    public int GetUserById(int id)
+    {
+      var userDal = new UserDal();
+      int userId = userDal.GetUserById(id);
+      return userId;
+    }
+
+    public int UpdateUser(string name, int id)
+    {
+      var userDal = new UserDal();
+      int userId = userDal.UpdateUser(name, id);
+      return userId;
+    }
+  }
 }
