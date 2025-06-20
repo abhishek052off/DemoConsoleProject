@@ -30,7 +30,7 @@ namespace DemoConsoleProject.Business.Service
     public int GetUserById(int id)
     {
       var userDal = new UserDal();
-      int userId = userDal.GetUserById(id);
+      int userId = userDal.GetUserIdById(id);
       return userId;
     }
 
