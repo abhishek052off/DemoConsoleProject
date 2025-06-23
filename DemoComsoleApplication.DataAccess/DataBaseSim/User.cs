@@ -9,10 +9,12 @@ namespace DemoConsoleProject.Presentation.DataBaseSim
     //entity model 
     public class User
     {
-
-        public static List<User> Users = new List<User>();  
-
         public string Name { get; set; }
         public int Id { get; set; }
+    }
+
+    public class UserDBNolongerUsed
+    {
+        public static List<User> Users = new List<User>();  //Will not be going to store it here 
     }
 }

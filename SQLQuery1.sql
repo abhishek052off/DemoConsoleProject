@@ -1,0 +1,17 @@
+﻿CREATE TABLE Orders (
+    Id INT PRIMARY KEY IDENTITY,
+    OrderDate DATETIME NOT NULL,
+    UserId INT NOT NULL,
+
+    CONSTRAINT FK_Orders_Users FOREIGN KEY (UserId)
+        REFERENCES Users(Id)
+        ON DELETE CASCADE -- optional
+        ON UPDATE CASCADE -- optional
+);
+
+CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(100) NOT NULL
+);
+
+SELECT * FROM Users
