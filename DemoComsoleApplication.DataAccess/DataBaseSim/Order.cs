@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DemoComsoleApplication.DataAccess.DataBaseSim
 {
-  public class Order
-  {
-    public int Id { get; set; }
+  public class Order : BaseEntity
+    {
+    
     public int UserId { get; set; }
   }
 }

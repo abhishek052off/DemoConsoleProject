@@ -194,6 +194,16 @@ namespace DemoConsoleProject.Presentation
             }
             else
             {
+
+                //var p = new Person();
+                //p.Name = name;
+                //p.Age = 10;
+
+                ////p.instances = 10;
+
+
+                //Person.instances
+
                 userService.UpdateUser(name, id);
                 Console.WriteLine("User Updated Successfully " + id);
             }
@@ -221,6 +231,8 @@ namespace DemoConsoleProject.Presentation
 
 
     }
+
+
 }
 
 

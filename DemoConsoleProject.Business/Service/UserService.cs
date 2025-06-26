@@ -9,37 +9,44 @@ using System.Threading.Tasks;
 
 namespace DemoConsoleProject.Business.Service
 {
-  public class UserService
-  {
-
-    public int CreateUser(string name)
+    public class UserService
     {
+        private readonly UserRepository _userRepo;
 
-      var useDal = new UserRepository();
+        public UserService()
+        {
+            _userRepo = new UserRepository();
+        }
 
-      int id = useDal.CreateUser(name);
+        public int CreateUser(string name)
+        {
+            var user = new User
+            {
+                Name = name
+            };
+           
+            User user2 = _userRepo.Create(user);
 
-      return id;
+            return user2.Id;
+        }
+
+        public List<User> GetAllUsers()
+        {
+
+            return _userRepo.GetAllUsers();
+        }
+
+        public int GetUserById(int id)
+        {
+
+            int userId = _userRepo.GetUserIdById(id);
+            return userId;
+        }
+
+        public int UpdateUser(string name, int id)
+        {
+            int userId = _userRepo.UpdateUser(name, id);
+            return userId;
+        }
     }
-
-    public List<User> GetAllUsers()
-    {
-      var useDal = new UserRepository();
-      return useDal.GetAllUsers();
-    }
-
-    public int GetUserById(int id)
-    {
-      var userDal = new UserRepository();
-      int userId = userDal.GetUserIdById(id);
-      return userId;
-    }
-
-    public int UpdateUser(string name, int id)
-    {
-      var userDal = new UserRepository();
-      int userId = userDal.UpdateUser(name, id);
-      return userId;
-    }
-  }
 }

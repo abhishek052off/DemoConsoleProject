@@ -12,4 +12,7 @@ namespace DemoConsoleProject.Presentation.DAL
         bool IsUserExists(int id);
         int UpdateUser(string name, int id);
     }
+
+
+    
 }

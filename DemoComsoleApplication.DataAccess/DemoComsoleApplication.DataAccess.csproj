@@ -52,11 +52,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DAL\BaseRepository.cs" />
+    <Compile Include="DAL\IOrderDataAccess.cs" />
     <Compile Include="DAL\IUserDataAccess.cs" />
     <Compile Include="DAL\OrderDal.cs" />
+    <Compile Include="DAL\OrderRepository.cs" />
     <Compile Include="DAL\UserDal.cs" />
     <Compile Include="DAL\UserRepository.cs" />
     <Compile Include="DataBaseSim\AppDbContext.cs" />
+    <Compile Include="DataBaseSim\BaseEntity.cs" />
     <Compile Include="DataBaseSim\Order.cs" />
     <Compile Include="DataBaseSim\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

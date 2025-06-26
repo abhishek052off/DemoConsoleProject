@@ -3,48 +3,45 @@ using DemoConsoleProject.Presentation.DAL;
 using DemoConsoleProject.Presentation.DataBaseSim;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DemoComsoleApplication.DataAccess.DAL
 {
-    public class UserRepository : IUserDataAccess
+    public class UserRepository : BaseRepository<User>, IUserDataAccess // CRUD
     {
+        
+ 
+
         public int CreateUser(string name)
         {
-            using (var dbContext = new AppDbContext())
+
+            var user = new User()
             {
-                var user = new User()
-                {
-                    Name = name,
-                };
+                Name = name,
+            };
 
-                dbContext.Users.Add(user);
+            _context.Users.Add(user);
 
-                dbContext.SaveChanges(); //Exceptions 
+            _context.SaveChanges(); //Exceptions 
 
-                return user.Id;
-            }
-            ;
+            return user.Id;
+         
         }
 
         public List<User> GetAllUsers()
         {
-            using(var dbContext = new AppDbContext())
-            {
-                var users = dbContext.Users;
-                return users.ToList(); // Count() , individually iterate , FirstOrDefault() , First()
-            }
+            var users = _context.Users;
+            return users.ToList(); // Count() , individually iterate , FirstOrDefault() , First()
         }
 
         public User GetUserById(int id)
         {
-            using (var dbContext = new AppDbContext())
-            {
-                var users = dbContext.Users.Where(x => x.Id == id);
-                return users.FirstOrDefault();  
-            }
+            var users = _context.Users.Where(x => x.Id == id);
+            return users.FirstOrDefault();
         }
 
         public int GetUserIdById(int id)
@@ -54,28 +51,44 @@ namespace DemoComsoleApplication.DataAccess.DAL
 
         public bool IsUserExists(int id)
         {
-            using (var dbContext = new AppDbContext())
-            {
-                var users = dbContext.Users.Where(x => x.Id == id);
-                return users.Any();
-            }
+            var users = _context.Users.Where(x => x.Id == id);
+            return users.Any();
         }
 
         public int UpdateUser(string name, int id)
         {
-            using (var dbContext = new AppDbContext())
-            {
-                var user = dbContext.Users.Where(x => x.Id == id).FirstOrDefault();
-                
-                if (user == null)
-                {
-                    return -1; //throw Exception 
-                }
+            var user = _context.Users.Where(x => x.Id == id).FirstOrDefault();
 
-                user.Name = name;
-                dbContext.SaveChanges();
-                return user.Id;
+            if (user == null)
+            {
+                return -1; //throw Exception 
             }
+
+            user.Name = name;
+            _context.SaveChanges();
+            return user.Id;
         }
+
+        //---FRESH START ---
+
+      
+
     }
+
+
+    //----------DEMO PURPOSE ------------DOT DOING ANYTHING 
+
+    //public class DemoClass
+    //{
+    //    public int ID { get; set; }
+    //}
+
+    //public class DemoRepository : BaseRepository<DemoClass>
+    //{
+
+    //}
+
+    //
+
+
 }
